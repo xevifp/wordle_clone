@@ -63,9 +63,9 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - assets/words_4.json
-    - assets/words_5.json
-    - assets/words_6.json
+    - assets/6-letter-words.json
+    - assets/4-letter-words.json
+    - assets/5-letter-words.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
