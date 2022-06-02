@@ -23,7 +23,11 @@ class WordleKey extends ConsumerWidget {
       );
     }
 
-    return Container(
+    return InkWell(
+      onTap: () {
+        ref.read(gameStateProvider.notifier).updateCurrentAttempt(letter);
+      },
+      child: Container(
       width: width,
       height: 60,
       alignment: Alignment.center,
@@ -31,14 +35,12 @@ class WordleKey extends ConsumerWidget {
       margin: EdgeInsets.all(4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(4)),
-        color: Color.fromARGB(44, 44, 44, 44)
-      ),
-      child: InkWell(
-        onTap: () {
-          ref.read(gameStateProvider.notifier).updateCurrentAttempt(letter);
-        },
-        child: keyCap,
-      ),
+        color: Color.fromARGB(44, 44, 44, 44)),
+      child: keyCap
+    ),
     );
+
+  
+   
   }
 }

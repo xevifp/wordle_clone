@@ -64,20 +64,39 @@ class GameStateNotifier extends StateNotifier<GameState>{
   }
 
   void updateCurrentAttempt(String key){
-    if (key == '_'){ // handle enter press
-    } else if (key == '<'){ // handle backpress  
-    } else {
-      final attempts = state.attempts;
+    final attempts = state.attempts;
       if (attempts.length <= state.attempted){  
         attempts.add('');   
       }   
-      var currentAttempt = attempts[state.attempted];
+    var currentAttempt = attempts[state.attempted];
+    if (key == '_'){ // handle enter press
+
+      if (currentAttempt.length < state.settings.wordsize){
+        print('Paraula incompleta, presta atenció');
+        return;
+      }
+
+      state = state.clone(
+        attempted: state.attempted +1
+      );
+
+
+    } else if (key == '<'){ // handle backpress  
+      if (currentAttempt.isEmpty){
+        print('No es pot borrar un espai buit');
+        return;
+      }
+      currentAttempt = currentAttempt.substring(0, currentAttempt.length -1);
+      attempts[state.attempted] = currentAttempt;
+      state = state.clone(
+        attempts: attempts
+      );
+    } else {      
       if (currentAttempt.length >= state.settings.wordsize){
         print("t'has passat de lletres");
         return;
       }
       currentAttempt += key;
-      print(currentAttempt);
       attempts[state.attempted] = currentAttempt;
       state = state.clone(
         attempts: attempts
