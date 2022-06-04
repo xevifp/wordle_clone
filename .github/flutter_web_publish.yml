@@ -3,8 +3,7 @@ on:
   push:
     branches:
       -master
-      
-
+     
 jobs:
   build:
     name: Build Web and Deploy
@@ -20,7 +19,7 @@ jobs:
       - run: flutter build web --release --base-href $BASE_HREF
       - name: Deply gh-pages 
       - uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
