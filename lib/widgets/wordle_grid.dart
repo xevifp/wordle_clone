@@ -12,16 +12,27 @@ class WordleGrid extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final gameSettings = ref.watch(gameSettingsProvider);
-    final GameState  = ref.watch(gameStateProvider);
+    final gameState  = ref.watch(gameStateProvider);
 
     final wordSize = gameSettings.wordsize;
     final List<WordleRow> rows = List.empty(growable: true);
     for(int i = 0; i < gameSettings.attempts; i++){
       var word = '';
-      if (GameState.attempts.length > i){
-        word = GameState.attempts[i];
+      if (gameState.attempts.length > i){
+        word = gameState.attempts[i];
       }
-      rows.add(WordleRow(wordsize: wordSize, word: word));
+      var attempted = false;
+      if(gameState.attempted > i){
+        attempted = true;
+      }
+
+      
+      rows.add(WordleRow(
+        wordsize: wordSize, 
+        correctWord: gameState.correctWord, 
+        word: word, 
+        attempted: attempted,
+      ));
     }
 
 

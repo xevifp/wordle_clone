@@ -6,6 +6,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wordle_clone/data/wordle_repo.dart';
 import 'package:wordle_clone/providers/game_settings_provider.dart';
 
+
+/*
+A: unused
+B: invalid
+C: 
+D:
+
+*/
+
 class GameState {
   final GameSettings settings;
   final List<String> validWords;

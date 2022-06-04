@@ -17,9 +17,9 @@ class WordleKey extends ConsumerWidget {
       keyCap = Icon(Icons.backspace_outlined, size: 32,);
     } else {
       width = 40;
-      keyCap = Text(letter, style: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.bold),
+      keyCap = Text(
+        letter.toUpperCase(), 
+        style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
       );
     }
 
