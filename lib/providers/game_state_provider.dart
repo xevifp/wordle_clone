@@ -85,6 +85,11 @@ class GameStateNotifier extends StateNotifier<GameState>{
         return;
       }
 
+      if (!state.validWords.contains(currentAttempt)){
+        print('Paraula no vàlida. No està a la llista');
+        return;
+      }
+
       state = state.clone(
         attempted: state.attempted +1
       );
